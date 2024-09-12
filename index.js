@@ -9,7 +9,7 @@ function shuffle(array) {
   return array;
 }
 let progressBars = "";
-let cant = 27;
+let cant = 50;
 let height = 100 / cant;
 let arrayEelement = [];
 for (let i = 1; i <= cant; i++) {
@@ -32,35 +32,37 @@ elements.innerHTML = progressBars;
 
 
 function ordenar() {
-  let array = shuffledArray.slice(); // Copia del array para no modificar el original
-  let i = 0;
+  let array = shuffledArray.slice();
+  buttonOrdenar.disabled = true;
+  buttonDesordenar.disabled = true;
+
+  let i = cant;
   let j = 0;
-  buttonOrdenar.disabled = true;;
-  buttonDesordenar.disabled = true;;
-  function step() {
-    if (i < cant) {
-      if (j < cant) {
-        if (array[i] > array[j]) {
-          [array[i], array[j]] = [array[j], array[i]];
+
+  function ordenarPaso() {
+    if (i > 0) {
+      if (j < i - 1) {
+        if (array[j] > array[j + 1]) {
+          [array[j], array[j + 1]] = [array[j + 1], array[j]];         
         }
-        updateProgressBars(array, i, j);
+         updateProgressBars(array, j, j + 1);
         j++;
+        setTimeout(ordenarPaso, 10); // Retraso de 300 ms entre cada paso
       } else {
-        i++;
-        j = i;
+        j = 0;
+        i--;
+        setTimeout(ordenarPaso, 0); // Retraso de 300 ms entre cada paso
       }
-      setTimeout(step, 20); // Ajusta el tiempo de espera según sea necesario
-      }
-    else {
+    } else {
       ordenado(array);
-      
       buttonDesordenar.disabled = false;
-      }
-      
-  } 
-    step();
-    
+    }
+  }
+
+  ordenarPaso();
 }
+
+
 
 function updateProgressBars(array, i, j) {
   let progressBars = "";
