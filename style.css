@@ -16,9 +16,10 @@
   background-color: red; /* Color para la barra i */
 }
 
-.highlight-current .progress-bar {
-  background-color: blue; /* Color para la barra j */
+.highlight-current {
+  transform: scaleY(1.06);
 }
+
 
 .highlight-comp .progress-bar {
   background-color: rgb(74, 160, 103); /* Color para la barra j */

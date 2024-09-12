@@ -13,11 +13,42 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
-      <h1>Hola mundo</h1>
-      <button type="button" class="btn btn-primary my-4 me-0" onclick="ordenar()">Ordenar</button>
+    <div class="container mt-5">
+      <h1>Algoritmos de Ordenacion</h1>
+      <div class="container row my-4">
 
-      <div id="containerElements"></div>
+        <div class="col-6 my-4 d-flex">
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Elige un algoritmo</option>
+            <option value="1">Burbuja</option>
+            <option value="1">Selecion</option>
+            <option value="2">Insersion</option>
+            <option value="3">Quicksort</option>
+            <option value="3">Merge sort</option>
+          </select>
+          <button
+            type="button"
+            class="btn btn-primary col-4 mx-4"
+            onclick="ordenar()"
+            id="button_ordenar"
+          >
+            Ordenar
+          </button>
+        </div>
+
+        <div class="col-6 my-4 d-flex">
+          <button
+            type="button"
+            class="btn btn-warning mx-auto"
+            onclick="desordenar()"
+            id="button_desordenar"
+          >
+            Desordenar
+          </button>
+        </div>
+      </div>
+
+      <div id="containerElements" class="container"></div>
     </div>
 
     <script src="index.js"></script>
