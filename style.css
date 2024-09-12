@@ -1,0 +1,25 @@
+.progress {
+  width: 17px; /* Ancho de la barra de progreso */
+  height: 300px; /* Altura total de la barra de progreso */
+  background-color: #e0e0e0; /* Color de fondo de la barra */
+  position: relative;
+  display: inline-block;
+}
+.progress-bar {
+  width: 100%; /* Ancho completo de la barra de progreso */
+  background-color: #76c7c0; /* Color de la barra de progreso */
+  position: absolute;
+  bottom: 0; /* Alinea la barra al fondo */
+}
+
+.highlight-compare .progress-bar {
+  background-color: red; /* Color para la barra i */
+}
+
+.highlight-current .progress-bar {
+  background-color: blue; /* Color para la barra j */
+}
+
+.highlight-comp .progress-bar {
+  background-color: rgb(74, 160, 103); /* Color para la barra j */
+}
