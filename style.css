@@ -1,6 +1,6 @@
 .progress {
-  width: 17px; /* Ancho de la barra de progreso */
-  height: 300px; /* Altura total de la barra de progreso */
+  width: 5px; /* Ancho de la barra de progreso */
+  height: 500px; /* Altura total de la barra de progreso */
   background-color: #e0e0e000; /* Color de fondo de la barra */
   position: relative;
   display: inline-block;
@@ -17,7 +17,7 @@
 }
 
 .highlight-current {
-  transform: scaleY(1.01);
+  transform: scaleY(1.0);
 }
 
 
