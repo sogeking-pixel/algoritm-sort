@@ -4,41 +4,59 @@ import { insercion } from "./algoritmos/insercion.js";
 import { quicksort } from "./algoritmos/quicksort.js";
 import { mergesort } from "./algoritmos/megesort.js";
 
-
-
 //obtener los elementos del html
 const elements = document.getElementById("containerElements");
 const buttonOrdenar = document.getElementById("button_ordenar");
 const buttonDesordenar = document.getElementById("button_desordenar");
 const select = document.getElementById("algoritmoSelect");
 
+let time = 1;
 
-const time = 1;
-const cant = 140;
+let cant = 0;
 let height = 100 / cant;
-
 let progressBars = "";
-
 let arrayEelement = [];
-for (let i = 1; i <= cant; i++) {
-  arrayEelement.push(i);
+let shuffledArray = [];
+
+window.ordenar = ordenar;
+window.desordenar = desordenar;
+
+function calcularDivs() {
+  const contenedor = document.getElementById("containerElements");
+  const anchoContenedor = contenedor.clientWidth;
+  const anchoDiv = 5 + 4;
+  const numDivs = Math.floor(anchoContenedor / anchoDiv);
+  console.log(numDivs);
+
+  cant = numDivs;
+  height = 100 / cant;
+  arrayEelement = [];
+  shuffledArray = [];
+  for (let i = 1; i <= cant; i++) {
+    arrayEelement.push(i);
+  }
+  shuffledArray = shuffle(arrayEelement);
+  if (window.innerWidth < 900) {
+    time = 10;
+  }
+  if (window.innerWidth < 600) {
+    time = 15;
+  }
+  console.log(window.innerWidth);
+  desordenar();
 }
 
-let shuffledArray = shuffle(arrayEelement);
-
-desordenar(); 
 
 
-
-function ordenar() {
+async function ordenar() {
   const algoritmo = select.value;
   if (algoritmo === "") {
-   Swal.fire({
-     title: "¿Algoritmo?",
-     text: "Seleccione un algoritmo para comenzar a ordenar :D",
-     icon: "warning",
-     confirmButtonColor: "#3085d6",
-   });
+    Swal.fire({
+      title: "¿Algoritmo?",
+      text: "Seleccione un algoritmo para comenzar a ordenar :D",
+      icon: "warning",
+      confirmButtonColor: "#3085d6",
+    });
     return;
   }
 
@@ -48,21 +66,21 @@ function ordenar() {
   console.log(array);
   switch (algoritmo) {
     case "1":
-      burbuja(array, time, height, buttonDesordenar);
+      await burbuja(array, time, height, buttonDesordenar);
       break;
 
     case "2":
-      seleccion(array, time, height, buttonDesordenar);
+      await seleccion(array, time, height, buttonDesordenar);
       break;
 
     case "3":
-      insercion(array, time, height, buttonDesordenar);
+      await insercion(array, time, height, buttonDesordenar);
       break;
     case "4":
-      quicksort(array, time, height, buttonDesordenar);
+      await quicksort(array, time, height, buttonDesordenar);
       break;
     case "5":
-      mergesort(array, time, height, buttonDesordenar);
+      await mergesort(array, time, height, buttonDesordenar);
       break;
     default:
       buttonDesordenar.disabled = false;
@@ -75,9 +93,7 @@ function ordenar() {
       });
       break;
   }
-  
 }
-
 
 function desordenar() {
   if (buttonOrdenar.disabled) {
@@ -98,7 +114,6 @@ function desordenar() {
   elements.innerHTML = progressBars;
 }
 
-
 function shuffle(array) {
   for (let i = array.length - 1; i >= 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -107,5 +122,8 @@ function shuffle(array) {
   return array;
 }
 
-window.ordenar = ordenar;
-window.desordenar = desordenar;
+
+window.onload = calcularDivs;
+
+window.onresize = calcularDivs;
+
