@@ -2,6 +2,8 @@ import { burbuja } from "./algoritmos/burbuja.js";
 import { seleccion } from "./algoritmos/seleccion.js";
 import { insercion } from "./algoritmos/insercion.js";
 import { quicksort } from "./algoritmos/quicksort.js";
+import { mergesort } from "./algoritmos/megesort.js";
+
 
 
 //obtener los elementos del html
@@ -58,6 +60,9 @@ function ordenar() {
       break;
     case "4":
       quicksort(array, time, height, buttonDesordenar);
+      break;
+    case "5":
+      mergesort(array, time, height, buttonDesordenar);
       break;
     default:
       buttonDesordenar.disabled = false;
