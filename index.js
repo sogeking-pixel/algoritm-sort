@@ -11,7 +11,7 @@ const buttonDesordenar = document.getElementById("button_desordenar");
 const select = document.getElementById("algoritmoSelect");
 
 
-const time = 10;
+const time = 1;
 const cant = 120;
 let height = 100 / cant;
 
