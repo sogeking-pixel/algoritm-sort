@@ -15,45 +15,36 @@
   </head>
   <body>
     <div class="container mt-5">
-      <h1>Algoritmos de Ordenacion</h1>
-      <div class="container row my-4">
-
-        <div class="col-6 my-4 d-flex">
-          <select class="form-select" aria-label="Default select example" id="algoritmoSelect">
-            <option selected value="">Elige un algoritmo</option>
-            <option value="1">Burbuja</option>
-            <option value="2">Selecion</option>
-            <option value="3">Insersion</option>
-            <option value="4">Quicksort</option>
-            <option value="5">Merge sort</option>
-          </select>
-          <button
-            type="button"
-            class="btn btn-primary col-4 mx-4"
-            onclick="ordenar()"
-            id="button_ordenar"
-          >
-            Ordenar
-          </button>
-        </div>
-
-        <div class="col-6 my-4 d-flex">
-          <button
-            type="button"
-            class="btn btn-warning mx-auto"
-            onclick="desordenar()"
-            id="button_desordenar"
-          >
-            Desordenar
-          </button>
-        </div>
-      </div>
+  <h1>Algoritmos de Ordenación</h1>
+  <div class="row my-4">
+    <div class="col-12 col-lg-6 my-2 d-flex flex-column flex-lg-row">
+      <select class="form-select mb-2 mb-lg-0" aria-label="Default select example" id="algoritmoSelect">
+        <option selected value="">Elige un algoritmo</option>
+        <option value="1">Burbuja</option>
+        <option value="2">Selección</option>
+        <option value="3">Inserción</option>
+        <option value="4">Quicksort</option>
+        <option value="5">Merge sort</option>
+      </select>
+      
     </div>
+    <div class="col-12 col-lg-6 my-2 d-flex justify-content-center justify-content-lg-start">
+      <button type="button" class="btn btn-primary w-100 w-lg-auto mx-lg-5 mx-2" onclick="ordenar()" id="button_ordenar">
+        Ordenar
+      </button>
+      <button type="button" class="btn btn-warning w-100 w-lg-auto mx-2" onclick="desordenar()" id="button_desordenar">
+        Desordenar
+      </button>
+    </div>
+  </div>
+</div>
 
-    <div class="mx-4 ">
+
+
+
+    <div class="mx-4">
       <div id="containerElements" class="w-100"></div>
     </div>
-    
 
     <script type="module" src="index.js"></script>
     <script
