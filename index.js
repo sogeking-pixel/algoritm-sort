@@ -14,7 +14,7 @@ const select = document.getElementById("algoritmoSelect");
 
 
 const time = 1;
-const cant = 120;
+const cant = 140;
 let height = 100 / cant;
 
 let progressBars = "";

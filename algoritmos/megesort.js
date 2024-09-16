@@ -21,12 +21,12 @@ async function mergesort_recursiva(array, ini, fin) {
   let mit = Math.floor((ini + fin) / 2);
   let dif = fin - ini;
   const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
+  
   if (dif > 1) {
     await mergesort_recursiva(array, ini, mit);
     await mergesort_recursiva(array, mit + 1, fin);
   }
-
+ bar_actual_add(mit);
   let i = ini;
   let j = mit + 1;
   const L = new Array();
@@ -36,32 +36,42 @@ async function mergesort_recursiva(array, ini, fin) {
   for (let j = mit + 1; j <= fin; j++) R[j] = array[j];
 
   while (i <= mit && j <= fin) {
+      bar_comparar_add(k);
+      await pause(time);
+      bar_comparar_remove(k);
     if (L[i] <= R[j]) {
       array[k] = L[i];
       bar_swap(array, k, array.indexOf(L[i]), height);
       i++;
-    } else {
+    } else {      
       array[k] = R[j];
       bar_swap(array, k, array.indexOf(R[j]), height);
       j++;
     }
     k++;
-    await pause(time);
+    
   }
 
   while (i <= mit) {
+     bar_comparar_add(k);
+     await pause(time);
+     bar_comparar_remove(k);
     array[k] = L[i];
     bar_swap(array, k, array.indexOf(L[i]), height);
     i++;
     k++;
-    await pause(time);
+
   }
 
   while (j <= fin) {
+     bar_comparar_add(k);
+     await pause(time);
+     bar_comparar_remove(k);
     array[k] = R[j];
     bar_swap(array, k, array.indexOf(R[j]), height);
     j++;
     k++;
-    await pause(time);
   }
+
+  bar_actual_remove(mit);
 }
