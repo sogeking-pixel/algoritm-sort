@@ -11,7 +11,7 @@ const buttonDesordenar = document.getElementById("button_desordenar");
 const select = document.getElementById("algoritmoSelect");
 
 
-const time = 1;
+const time = 10;
 const cant = 120;
 let height = 100 / cant;
 
@@ -56,7 +56,9 @@ function ordenar() {
     case "3":
       insercion(array, time, height, buttonDesordenar);
       break;
-
+    case "4":
+      quicksort(array, time, height, buttonDesordenar);
+      break;
     default:
       buttonDesordenar.disabled = false;
       buttonOrdenar.disabled = false;

@@ -12,29 +12,21 @@ export async function seleccion(
   buttonDesordenar
 ) {
 
-  const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   let xd = 0;
   let k = 0; 
   let aux = 0;
-  let id_actual = 0;
-  let id_compare = 0;
 
   for (let i = 0; i < array.length; i++) {
     aux = array[i];
     k = i;
     for (let j = i + 1; j < array.length; j++) {
-      id_actual = array.indexOf(array[k]);
-      id_compare = array.indexOf(array[j]);
-      bar_actual_add(id_actual);
-      bar_comparar_add(id_compare);
+       
+      await funcion_generica(k, j, time); 
       if (array[j] < aux) {
         aux = array[j];
         k = j;
-      }
-      await pause(time);
-      xd += time;
-      bar_actual_remove(id_actual);
-      bar_comparar_remove(id_compare);
+      }      
+      xd += time;      
     }
 
     array[k] = array[i];
@@ -46,4 +38,13 @@ export async function seleccion(
   bar_complete(array, time);
   buttonDesordenar.disabled = false;
   
+}
+
+async function funcion_generica(k, j, time) {
+  const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  bar_actual_add(k);
+  bar_comparar_add(j);
+  await pause(time);
+  bar_actual_remove(k);
+  bar_comparar_remove(j);  
 }
